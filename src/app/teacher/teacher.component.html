@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div>
+    <button class="btn btn-primary" (click)="openModal('add')">Add teacher</button>
+  </div>
+  <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+    <div class="col" *ngFor="let teacher of teachers">
+      <div class="card radius-15">
+        <div class="card-body text-center">
+          <div class="p-4 border radius-15">
+            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="110" height="110" class="rounded-circle shadow" alt="">
+            <h5 class="mb-0 mt-5">{{teacher.firstName}} {{teacher.lastName}} </h5>
+            <p class="mb-3">{{teacher.mailAddress}}</p>
+            <div class="float-right btn-group btn-group-sm">
+              <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+              <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i></button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-teacher-add></app-teacher-add>
+
