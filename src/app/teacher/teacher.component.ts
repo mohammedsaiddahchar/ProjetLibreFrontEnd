@@ -11,12 +11,18 @@ export class TeacherComponent implements OnInit {
   public teachers: TeacherModel[] = [];
   constructor(private teacherService: TeacherService) { }
 
+
   ngOnInit() {
     this.getAllTeachers();
+
   }
 
   public getAllTeachers() : void {
     this.teacherService.getAllTeachers().subscribe((response)=> this.teachers = response);
+  }
+
+  public deleteTeacher(id: number) : void {
+    this.teacherService.deleteTeacherById(id).subscribe((response) => this.getAllTeachers());
   }
 
   public openModal(mode: string) : void {

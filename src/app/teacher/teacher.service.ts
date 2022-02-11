@@ -22,4 +22,8 @@ export class TeacherService {
   public addPartTimeTeacher(teacher: TeacherModel) : Observable<TeacherModel> {
     return this.http.post<TeacherModel>(`${environment.apiBaseUrl}/api/parttimeteacher/add`, teacher);
   }
+
+  public deleteTeacherById(id: number) : Observable<void> {
+    return this.http.delete<void>(`${environment.apiBaseUrl}/api/teacher/delete/` + id);
+  }
 }

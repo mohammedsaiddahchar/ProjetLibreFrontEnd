@@ -1,5 +1,5 @@
 export class TeacherModel {
-  id: string = '';
+  id!: number;
   lastName: string = '';
   firstName: string = '';
   mailAddress: string = '';
