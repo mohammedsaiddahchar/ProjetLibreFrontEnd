@@ -15,6 +15,22 @@ export class TeacherService {
     return this.http.get<TeacherModel[]>(`${environment.apiBaseUrl}/api/teacher/all`);
   }
 
+  public getAllFullTimeTeachers() : Observable<TeacherModel[]> {
+    return this.http.get<TeacherModel[]>(`${environment.apiBaseUrl}/api/fulltimeteacher/all`);
+  }
+
+  public findTeacherById(id: number) : Observable<TeacherModel> {
+    return this.http.get<TeacherModel>(`${environment.apiBaseUrl}/api/teacher/find/` + id);
+  }
+
+  public findFullTimeTeacherById(id: number) : Observable<TeacherModel> {
+    return this.http.get<TeacherModel>(`${environment.apiBaseUrl}/api/fulltimeteacher/find/` + id);
+  }
+
+  public findPartTimeTeacherById(id: number) : Observable<TeacherModel> {
+    return this.http.get<TeacherModel>(`${environment.apiBaseUrl}/api/parttimeteacher/find/` + id);
+  }
+
   public addFullTimeTeacher(teacher: TeacherModel) : Observable<TeacherModel> {
     return this.http.post<TeacherModel>(`${environment.apiBaseUrl}/api/fulltimeteacher/add`, teacher);
   }
@@ -25,5 +41,9 @@ export class TeacherService {
 
   public deleteTeacherById(id: number) : Observable<void> {
     return this.http.delete<void>(`${environment.apiBaseUrl}/api/teacher/delete/` + id);
+  }
+
+  public addTeacher(teacher: TeacherModel): Observable<TeacherModel> {
+    return this.http.post<TeacherModel>(`${environment.apiBaseUrl}/api/teacher/add`, teacher);
   }
 }

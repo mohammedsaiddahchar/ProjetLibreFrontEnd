@@ -18,12 +18,14 @@ export class AddComponent {
   public addTeacher(teacher: TeacherModel) : void {
     const container = document.getElementById('main-container');
     if (this.status === 'fulltime') {
-      this.teacherService.addFullTimeTeacher(teacher).subscribe((response) => this.teacherComponent.getAllTeachers());
+      this.teacher.type = 'fulltimeteacher';
+      this.teacherService.addTeacher(teacher).subscribe((response) => this.teacherComponent.getAllTeachers());
       this.teacher = new TeacherModel();
       this.status = '';
     }
     if (this.status === 'parttime') {
-      this.teacherService.addPartTimeTeacher(teacher).subscribe((response) => this.teacherComponent.getAllTeachers());
+      teacher.type = 'parttimeteacher';
+      this.teacherService.addTeacher(teacher).subscribe((response) => this.teacherComponent.getAllTeachers());
       this.teacher = new TeacherModel();
       this.status = '';
     }

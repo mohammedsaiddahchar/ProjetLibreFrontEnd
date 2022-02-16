@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal fade" id="updateSubjectModal" tabindex="-1" aria-labelledby="updateSubjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateSubjectModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="designation"></label>
+            <input type="text" [(ngModel)]="subject.designation" name="designation" class="form-control" id="designation" placeholder="Designation" required />
+          </div>
+          <div class="form-group">
+            <label for="selectedTeacher">Teacher</label>
+            <select class="form-select" id="selectedTeacher" name="selectedTeacher" [(ngModel)]="subject.teacher.id">
+              <option *ngFor="let teacher of teachers" value="{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateSubject(subject)">Save changes</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

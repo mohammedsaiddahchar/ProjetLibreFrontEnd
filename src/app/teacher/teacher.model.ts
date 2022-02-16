@@ -3,4 +3,5 @@ export class TeacherModel {
   lastName: string = '';
   firstName: string = '';
   mailAddress: string = '';
+  type: string = '';
 }

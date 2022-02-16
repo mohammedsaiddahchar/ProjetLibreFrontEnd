@@ -11,7 +11,7 @@
 
         <div class="tab-content container">
           <div class="tab-pane show active">
-            <div class="row">
+            <div class="row" *ngFor="let module of sector.listModule">
               <!-- Schedule Item 1 -->
               <div class="col-md-3">
                 <div class="timetable-item h-100 d-flex align-items-center justify-content-cente">
@@ -19,7 +19,7 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Contemporary Dance">
                   </div>
                   <div class="timetable-item-main">
-                    <div class="timetable-item-time">Hassan Badir</div>
+                    <div class="timetable-item-time">{{module.moduleManager.firstName }} {{module.moduleManager.lastName}}</div>
                     <div class="timetable-item-name">Responsable module</div>
                     <a href="#" class="btn btn-primary btn-book">Contacter</a>
                   </div>
@@ -27,75 +27,72 @@
               </div>
 
               <div class="col-md-3 ">
-                <div class="timetable-item h-100 d-flex align-items-center justify-content-center">
-                  Module
+                <div class="row timetable-item h-100 d-flex align-items-center justify-content-center">
+                  <div>{{module.designation}}</div>
+                  <div class="float-right btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary" (click)="openModal('updateModule', module, null)"><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger" (click)="deleteModuleToSector(module)"><i class="fa fa-times"></i></button>
+                  </div>
                 </div>
+
               </div>
 
               <!-- Schedule Item 2 -->
               <div class="col-md-4">
                 <div class="timetable-item h-100 ">
                   <div class="row col-md-12">
-                    <div class="col-md-12">
+                    <div class="col-md-12" *ngFor="let subject of module.listSubject">
                       <div class="col-md-12">
                         <div class="row col-md-12">
                           <div class="col-md-10">
-                            Test
+                            {{subject.designation}}
                           </div>
                           <div class="col-md-2">
                             <div class="float-right btn-group btn-group-sm">
-                              <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                              <button type="button" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                              <button type="button" class="btn btn-primary" (click)="openModal('updateSubject', module, subject)"><i class="fa fa-pencil"></i></button>
+                              <button type="button" class="btn btn-danger" (click)="deleteSubjectToModule(module, subject)"><i class="fa fa-times"></i></button>
                             </div>
+
                           </div>
 
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-12">
-                      <div class="col-md-12">
-                        <div class="row col-md-12">
-                          <div class="col-md-10">
-                            Test
-                          </div>
-                          <div class="col-md-2">
-                            <div class="float-right btn-group btn-group-sm">
-                              <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                              <button type="button" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                            </div>
-                          </div>
 
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="col-md-12">
-                        <div class="row col-md-12">
-                          <div class="col-md-10">
-                            Test
-                          </div>
-                          <div class="col-md-2">
-                            <div class="float-right btn-group btn-group-sm">
-                              <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                              <button type="button" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                            </div>
-                          </div>
 
-                        </div>
-                      </div>
-                    </div>
 
                     <div class="col-md-12 d-flex align-items-center justify-content-center">
-                      <button type="button" class="btn btn-success" (click)="test()"><i class="fa fa-plus"></i></button>
+
+                      <button type="button" class="btn btn-success" (click)="openModal('addSubject', module, null)"><i class="fa fa-plus"></i></button>
+
                     </div>
                     </div>
                   </div>
                 </div>
               </div>
+            <div class="row">
+              <!-- Schedule Item 1 -->
+              <div class="col-md-10 ">
+                <div class="timetable-item h-100 w-100 d-flex align-items-center justify-content-center">
+                  <button type="button" class="btn btn-success" (click)="openModal('addModule', null, null)"><i class="fa fa-plus"></i></button>
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+<div id="mycontainer"></div>
+<app-sector-add-subject></app-sector-add-subject>
+<app-sector-add-module></app-sector-add-module>
+<app-sector-update-subject [subject]="actualSubject"></app-sector-update-subject>
+<app-sector-update-module [module]="actualModule"></app-sector-update-module>
